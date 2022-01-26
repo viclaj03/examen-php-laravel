@@ -31,6 +31,7 @@ class GangaRequest extends FormRequest
             'price'=>'required|numeric|between:0.00,999999.99',
             'discount_price'=>'required|numeric|lt:price',
             'points'=>'required|numeric',
+            'available'=>'required|boolean'
         ];
     }
 }

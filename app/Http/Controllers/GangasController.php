@@ -15,10 +15,14 @@ class GangasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('admin',['except'=>['index','show']]);
+    }
     public function index()
     {
         $categories = Categorie::all();
-
         $productos = Ganga::all();
 
         $collection = collect($productos);
@@ -66,7 +70,7 @@ class GangasController extends Controller
         $ganga->points = $request->points;
         $ganga->price = $request->price;
         $ganga->discount_price = $request->discount_price;
-        $ganga->available = true;
+        $ganga->available = $request->available;
         $ganga->save();
         return redirect()->route('ganga.show', $ganga->id);
     }
@@ -113,6 +117,7 @@ class GangasController extends Controller
         $ganga->points = $request->points;
         $ganga->price = $request->price;
         $ganga->discount_price = $request->discount_price;
+        $ganga->available = $request->available;
         $ganga->save();
         return view('ganga.show', compact('ganga'));
     }

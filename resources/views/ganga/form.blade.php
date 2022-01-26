@@ -55,10 +55,10 @@
 
                             <div class="form-group">
                                 <p>Available</p> <br>
-                                ----------------------------------------------------------
-                                <input type="radio" id="true" name="available" value="1">
+
+                                <input type="radio" id="true" name="available" value="1" {{isset($ganga)?$ganga->available?'checked':'':(old('available')?'checked':'') }}>
                                 <label for="html">True</label><br>
-                                <input type="radio" id="false" name="available" value="0">
+                                <input type="radio" id="false" name="available" value="0"  {{(isset($ganga)?!$ganga->available?'checked':'':(!old('available')?'checked':''))}} >
                                 <label for="css">False</label><br>
 
                                 <small id="nameHelp" class="form-text text-muted">si esta available o lo que sea ...</small>
@@ -69,7 +69,6 @@
                                 @endif
 
                             </div>
-                            ------------------------------------------------------------------------------------
 
                             <div class="form-group">
                                 <label for="discount_price">Discount Price:</label>
@@ -96,7 +95,7 @@
                                 <small id="nameHelp" class="form-text text-muted">Categoria de la ganga</small>
                                 <select class="form-control" name="id_category"  >
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" @isset($ganga) {{$category->id== $ganga->category_id?'selected':''}} @endisset >   {{ $category->title}}</option>
+                                        <option value="{{ $category->id }}" @isset($ganga) {{$category->id== $ganga->id_category?'selected':''}} @endisset >   {{ $category->title}}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('category_id'))
@@ -109,7 +108,7 @@
                             <div class="form-group">
                                 <label for="points">Points:</label>
                                 <input name="points" type="number" class="form-control " id="title" aria-describedby="titleHelp" placeholder="Points" value="{{old('points')??(isset($ganga)?$ganga->points:'')}}">
-                                <small id="nameHelp" class="form-text text-muted">Puntua el producto del 1 al 10</small>
+                                <small id="nameHelp" class="form-text text-muted">Puntua el producto del 1 al 10 o mas si te apetece </small>
                                 @if ($errors->has('points'))
                                     <div class="text-danger">
                                         {{ $errors->first('points') }}
