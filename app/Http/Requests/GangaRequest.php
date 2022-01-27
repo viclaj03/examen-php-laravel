@@ -27,7 +27,7 @@ class GangaRequest extends FormRequest
             'title'=>'required',
             'description'=>'required',
             'url'=>'required|url',
-            'id_category'=>'required|numeric|between:1,3',
+            'id_category'=>'required|numeric|exists:categories,id',
             'price'=>'required|numeric|between:0.00,999999.99',
             'discount_price'=>'required|numeric|lt:price',
             'points'=>'required|numeric',
@@ -35,3 +35,4 @@ class GangaRequest extends FormRequest
         ];
     }
 }
+//['required','numeric','between:1,3']

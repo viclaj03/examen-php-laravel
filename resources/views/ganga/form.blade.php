@@ -52,7 +52,6 @@
 
                             </div>
 
-
                             <div class="form-group">
                                 <p>Available</p> <br>
 
@@ -67,7 +66,6 @@
                                         {{ $errors->first('available') }}
                                     </div>
                                 @endif
-
                             </div>
 
                             <div class="form-group">
@@ -94,13 +92,14 @@
                             <div class="form-group">
                                 <small id="nameHelp" class="form-text text-muted">Categoria de la ganga</small>
                                 <select class="form-control" name="id_category"  >
-                                    @foreach ($categories as $category)
+                                    <option value="0" > Seleciona una cat.</option>
+                                @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" @isset($ganga) {{$category->id== $ganga->id_category?'selected':''}} @endisset >   {{ $category->title}}</option>
                                     @endforeach
                                 </select>
-                                @if ($errors->has('category_id'))
+                                @if ($errors->has('id_category'))
                                     <div class="text-danger">
-                                        {{ $errors->first('category_id') }}
+                                        {{ $errors->first('id_category') }}
                                     </div>
                                 @endif
                             </div>

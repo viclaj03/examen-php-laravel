@@ -31,7 +31,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 Route::resource('/ganga',GangasController::class);
+
+Route::get('/gangaDescount',[GangasController::class,'indexDescount'])->name('gangaDescount');
+
 
 
 Route::get('/contact',function (){

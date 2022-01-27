@@ -12,6 +12,9 @@
                                         <li class="active"><a href="/">Home</a></li>
                                         <li><a href="#">Tenda<i class="ti-angle-down"></i><span class="new">New</span></a>
                                             <ul class="dropdown">
+                                                @if( Auth::user() )
+                                                    <li> <a href="{{route('gangaDescount')}}">Mejores ofertas</a></li>
+                                                @endif
                                                 @if( Auth::user() && Auth::user()->admin)
                                                     <li> <a href="{{route('ganga.create')}}">Nou Producte</a></li>
                                                 @endif

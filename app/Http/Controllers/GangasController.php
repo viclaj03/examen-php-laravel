@@ -18,26 +18,26 @@ class GangasController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin',['except'=>['index','show']]);
+        $this->middleware('auth',['except'=>['index','show']]);
+        $this->middleware('admin',['except'=>['index','show','indexDescount']]);
     }
     public function index()
     {
         $categories = Categorie::all();
         $productos = Ganga::all();
 
-        $collection = collect($productos);
+        $collection = collect($productos)->sortDesc();
         $gangas = $collection->groupBy('id_category');
-        $gangas->all();
+
         return view('welcome', compact('categories','gangas'));
     }
 
     public function indexDescount()
     {
         $categories = Categorie::all();
-
-        $productos = Ganga::all();
-
-        $collection = collect($productos);
+        $productos = Ganga::orderByRaw('(price - discount_price) Desc')->take(8)->get();
+        //$productos = Ganga::orderBy('discount_price')->take(8)->get();
+        $collection = collect($productos)->sortDesc();
         $gangas = $collection->groupBy('id_category');
         $gangas->all();
         return view('welcome', compact('categories','gangas'));
