@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Ganga;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
 
 class GangaSeeder extends Seeder
 {
@@ -14,6 +15,10 @@ class GangaSeeder extends Seeder
      */
     public function run()
     {
-        Ganga::factory()->count(60)->create();
+        for ($i= 1;$i<61; $i++){
+            Ganga::factory()->times(1)->create();
+            File::copy(public_path('images/lll.jpg'),public_path('images/'.$i.'Ganga-ganga-severa.jpg'));
+        }
+
     }
 }

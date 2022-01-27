@@ -17,7 +17,7 @@ class GangaFactory extends Factory
     public function definition()
     {
         $original_price= $this->faker->randomFloat(2,1,2000);
-        File::copy(public_path('images/lol.jpg'),public_path('images/lll.jpg'));
+        File::copy(public_path('images/lll.jpg'),public_path('images/lol.jpg'));
 
         return [
             'title' => $this->faker->name(),
