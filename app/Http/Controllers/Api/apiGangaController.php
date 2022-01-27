@@ -66,7 +66,7 @@ class apiGangaController extends Controller
      * @param  \App\Models\Ganga  $ganga
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ganga $ganga)
+    public function update(GangaRequest $request, Ganga $ganga)
     {
         $ganga->title = $request->title;
         $ganga->description = $request->description;
