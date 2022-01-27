@@ -63,7 +63,7 @@
                                                 <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                     <div class="single-product">
                                                         <div class="product-img">
-                                                            <a href="{{route('ganga.show',$ganga->id)}} ">
+                                                            <a href="{{route('ganga.show',$ganga->id)}}">
                                                                 <img class="default-img" src="/images/{{$ganga->id}}Ganga-ganga-severa.jpg" alt="#">
                                                                 <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#">
                                                             </a>
@@ -87,7 +87,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="product-content">
-                                                            <h3><a href="product-details.html"><?=$ganga->title?></a></h3>
+                                                            <h3><a href="{{route('ganga.show',$ganga->id)}}"><?=$ganga->title?></a></h3>
                                                             <div class="product-price">
                                                                 <?= $ganga->discount_price??'' ?>
                                                                 <?= isset($ganga->price)
