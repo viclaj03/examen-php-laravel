@@ -35,4 +35,4 @@ class GangaRequest extends FormRequest
         ];
     }
 }
-//['required','numeric','between:1,3']
+
